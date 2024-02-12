@@ -1,8 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
+//When returning 2 componenets at the same time you need to nest them
 function App() {
-  return <h1>Hello React!</h1>;
+  return (
+    <div>
+      <h1>Hello React!</h1>
+      <Pizza />
+    </div>
+  );
+}
+
+//Never nest functions within other functions, always keep components at the top level
+function Pizza() {
+  return <h2>Pizza</h2>;
 }
 
 //Render the root (app) in version 18 and up
@@ -14,4 +25,4 @@ root.render(
 );
 
 //React before 18
-//React.render(<App/>)
+//ReactDOM.render(<App/>,document.getElementById("root"));
