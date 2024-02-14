@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
 
 const pizzaData = [
   {
@@ -49,7 +50,7 @@ const pizzaData = [
 //When returning 2 componenets at the same time you need to nest them
 function App() {
   return (
-    <div>
+    <div className="container">
       <Header />
       <Menu />
       <Footer />
@@ -58,24 +59,41 @@ function App() {
 }
 
 function Header() {
-  return <h1>Fast React Pizza Co.</h1>;
-}
-
-function Menu() {
+  // const style = { color: "red", fontSize: "48px", textTransform: "uppercase" };
+  const style = {};
   return (
     <div>
-      {" "}
-      <h2>Our Menu</h2>
-      <Pizza />
-      <Pizza />
-      <Pizza />
+      <header className="header">
+        <h1 style={style}>Fast React Pizza Co.</h1>
+      </header>
     </div>
   );
 }
 
-function Footer() {
+function Menu() {
   return (
-    <footer>{new Date().toLocaleTimeString()} - We're currently open</footer>
+    <main className="menu">
+      <h2>Our Menu</h2>
+      <Pizza />
+      <Pizza />
+      <Pizza />
+    </main>
+  );
+}
+
+function Footer() {
+  const hour = new Date().getHours();
+  const openHours = 12;
+  const closeHours = 22;
+  const isOpen = hour >= openHours && hour <= closeHours;
+
+  // if (hour >= openHours && hour <= closeHours) alert("We're currently open!");
+  // else alert("Sorry, we're closed!");
+
+  return (
+    <footer className="footer">
+      {new Date().toLocaleTimeString()} - We're currently open
+    </footer>
   );
   // return React.createElement("footer", null, "We're currently open");
 }
@@ -85,7 +103,7 @@ function Pizza() {
   return (
     <div>
       <img src="pizzas/spinaci.jpg" alt="Pizza spinaci" />
-      <h2>Pizza Spinaci</h2>
+      <h3>Pizza Spinaci</h3>
       <p>Tomato, mozarella, spinach, and ricotta cheese</p>
     </div>
   );
