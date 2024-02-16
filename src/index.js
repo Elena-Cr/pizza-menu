@@ -130,15 +130,11 @@ function Footer() {
   //       We're happy to welome you between {openHours}:00 and {closeHours}:00{" "}
   //     </p>
   //   );
+
   return (
     <footer className="footer">
       {isOpen ? (
-        <div className="order">
-          <p>
-            We're open until {closeHours}:00. Come visit us or order online.{" "}
-          </p>
-          <button className="btn">Order</button>
-        </div>
+        <Order closeHours={closeHours} openHours={openHours} />
       ) : (
         <p>
           We're happy to welome you between {openHours}:00 and {closeHours}:00{" "}
@@ -146,7 +142,19 @@ function Footer() {
       )}
     </footer>
   );
+
   // return React.createElement("footer", null, "We're currently open");
+}
+
+function Order(props) {
+  return (
+    <div className="order">
+      <p>
+        We're open until {props.closeHours}:00. Come visit us or order online.{" "}
+      </p>
+      <button className="btn">Order</button>
+    </div>
+  );
 }
 
 //Never nest functions within other functions, always keep components at the top level
